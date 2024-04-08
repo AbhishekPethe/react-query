@@ -12,8 +12,7 @@ const SuperHeroes = () => {
 
     useEffect(() => {
         setLoading(true)
-        setTimeout(() => {
-            
+       
             axios.get("http://localhost:4000/superheroes")
                 .then((response) => {
                     setData(response.data)
@@ -23,7 +22,7 @@ const SuperHeroes = () => {
                     setError(error.message)
                     setLoading(false)
                 })
-        }, 1000)
+        
         
     } , [])
 

@@ -2,7 +2,7 @@
   "superheroes": [
     {
       "id": 1,
-      "name": "Batman",
+      "name": "Batman 12",
       "alterEgo": "Bruce Wayne"
     },
     {
@@ -12,8 +12,14 @@
     },
     {
       "id": 3,
-      "name": "Wonder Woman",
+      "name": "Wonder Woman 111",
+      "alterEgo": "Princess Diana"
+    },
+    {
+      "id": 3,
+      "name": "Wonder Woman 111",
       "alterEgo": "Princess Diana"
     }
+    
   ]
 }
