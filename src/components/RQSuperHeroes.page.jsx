@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
 
 
 // with React-Query
@@ -18,9 +19,7 @@ const RQSuperHero = () => {
 
   const onSuccess = (data) => {
     console.log("Data is fetched successfully", data);
-    if (data.data.length === 4) {
-      useStopPoll(false)
-    }
+   
     
   }
 
@@ -35,11 +34,17 @@ const RQSuperHero = () => {
       // staleTime : 30000,
       // refetchOnMount: true,
       // refetchOnWindowFocus : true,
-      refetchInterval : stopPoll,
+      // refetchInterval : 2000,
       // enabled : false,
 
       onSuccess: onSuccess,
-      onError : onError
+      onError: onError,
+
+      // Data transformation 
+      // select: (data) => {
+      //   const superHeroNames = data.data.map((each) => each.name)
+      //   return superHeroNames
+      // }
     })
   
   const { isLoading, data , isError , error , isFetching , refetch} = results
@@ -51,6 +56,7 @@ const RQSuperHero = () => {
 
   console.log(isLoading , isFetching);
 
+
   return (
     <div>
       {/* <button onClick={refetch} >fetch data</button> */}
@@ -58,10 +64,23 @@ const RQSuperHero = () => {
       {
                 data?.data.map((each, i) => {
                     return (
-                        <p key={i}>{each.name}</p>
+                        <Link to={`/rqsinglesuperhero/${each.id}`} key={i}>{each.name}</Link>
                     )
                 })
-            }
+    }
+      
+      
+      {/* with data transformation  
+        when we use data transformation , the data we get from useQuery is manipulated according to our need.
+      */}
+      
+      {/* {
+        data.map((each , i) => {
+          return (
+            <p key={i} >{each}</p>
+          )
+        })
+      } */}
     </div>
   )
 }
