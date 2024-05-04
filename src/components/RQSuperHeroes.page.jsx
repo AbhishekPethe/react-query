@@ -20,6 +20,7 @@ const RQSuperHero = () => {
   const onSuccess = (data) => {
     console.log("Data is fetched successfully", data);
    
+   
     
   }
 
@@ -34,6 +35,7 @@ const RQSuperHero = () => {
       // staleTime : 30000,
       // refetchOnMount: true,
       // refetchOnWindowFocus : true,
+      // refetchInterval : 2000,
       // refetchInterval : 2000,
       // enabled : false,
 
@@ -57,11 +59,12 @@ const RQSuperHero = () => {
   console.log(isLoading , isFetching);
 
 
+
   return (
     <div>
       {/* <button onClick={refetch} >fetch data</button> */}
 
-      {
+      {/* {
                 data?.data.map((each, i) => {
                     return (
                         <Link to={`/rqsinglesuperhero/${each.id}`} key={i}>{each.name}</Link>
